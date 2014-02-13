@@ -26,6 +26,9 @@ app.get('/test', function(req, res) {
   res.render('test.html', { });
 });
 
+app.get('/calc', function(req, res) {
+	res.render('calc.html', { });
+});
 ///////////////////////////////////////////////////////////////////////////////
 // RUN CONFIGURATION                                                         //
 ///////////////////////////////////////////////////////////////////////////////
