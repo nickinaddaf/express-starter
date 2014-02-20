@@ -2,7 +2,7 @@ alert('Welcome to my AUHMAZINGG STUFF page :p'); // edit me!
 
 // Problem 1 (Say Hello!) ---------------------------------------------------
 $('#say_hello').click(function() {
-  console.log('Hello world!')
+  console.log('Hello world!');
 });
 
 
