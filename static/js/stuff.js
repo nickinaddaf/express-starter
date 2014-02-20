@@ -1,4 +1,4 @@
-alert('Welcome to my AUHMAZINGG STUFF page :p'); // edit me!
+alert('Welcome to my Amazing Stuff page'); // edit me!
 
 // Problem 1 (Say Hello!) ---------------------------------------------------
 $('#say_hello').click(function() {
