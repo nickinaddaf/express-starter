@@ -1,8 +1,8 @@
 // Problem 2 (Peekaboo) ------------------------------------------------------
-$($('#goaway').click(function() {
+$('#goaway').click(function() {
   $('#gorilla_img').hide();
   $('#goaway').text('Come back!');
-})});
+});
 
 // Problem 3 (Swap Em) -----------------------------------------------
 // WRITE CODE HERE
