@@ -1,4 +1,3 @@
-
 $('#toggle_image').click(function() {
 	if ($('#toggle_image').text()==='Go Away!' ) {
 		$('#gorilla_img').hide();
@@ -11,7 +10,7 @@ $('#toggle_image').click(function() {
 });
 
 // Problem 3 (Swap Em) -----------------------------------------------
-// WRITE CODE HERE
+alert($('#new_img_file').val(giraffe.jpg) src="/static/img/giraffe.jpg")
 
 // Problem 4 (Find the Source) -------------------------------------------------
 $('.clickable').click(function() {
