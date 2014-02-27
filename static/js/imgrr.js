@@ -1,7 +1,13 @@
-// Problem 2 (Peekaboo) ------------------------------------------------------
-$('#goaway').click(function() {
-  $('#gorilla_img').hide();
-  $('#goaway').text('Come back!');
+
+$('#toggle_image').click(function() {
+	if ($('#toggle_image').text()==='Go Away!' ) {
+		$('#gorilla_img').hide();
+  		$('#toggle_image').text('Come back!');
+	}
+	else {
+		$('#gorilla_img').show();
+		$('#toggle_image').text('Go Away!');
+	}
 });
 
 // Problem 3 (Swap Em) -----------------------------------------------
