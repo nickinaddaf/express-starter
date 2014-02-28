@@ -10,12 +10,16 @@ $('#toggle_image').click(function() {
 });
 
 // Problem 3 (Swap Em) -----------------------------------------------
-alert($('#new_img_file').val(giraffe.jpg) src="/static/img/giraffe.jpg")
+$('#change_img').click(function() {
+	$('#gorilla_img').attr('src','/static/img/'+$('#new_img_file').val())
+});	
 
 // Problem 4 (Find the Source) -------------------------------------------------
 $('.clickable').click(function() {
-  // WRITE CODE HERE
+  alert($(this).attr('src'));
 });
 
 // Problem 5 (Imgrr) -------------------------------------------------
-// WRITE CODE HERE
+$('.clickable2').click(function() {
+  $(this).attr('src','/static/img/'+$('SOMETHING'))
+});
