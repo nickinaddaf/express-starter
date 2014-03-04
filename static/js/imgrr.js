@@ -12,7 +12,7 @@ $('#toggle_image').click(function() {
 // Problem 3 (Swap Em) -----------------------------------------------
 $('#change_img').click(function() {
 	$('#gorilla_img').attr('src','/static/img/'+$('#new_img_file').val())
-});	
+});
 
 // Problem 4 (Find the Source) -------------------------------------------------
 $('.clickable').click(function() {
@@ -20,6 +20,21 @@ $('.clickable').click(function() {
 });
 
 // Problem 5 (Imgrr) -------------------------------------------------
-$('.clickable2').click(function() {
-  $(this).attr('src','/static/img/east_asian);
+$('#little_one').click(function() {
+    var big_pic = $("#bigpic").attr('src');
+    var little_pic = $("#little_one").attr('src');
+    $('#little_one').attr('src', big_pic);
+    $('#bigpic').attr('src', little_pic); 
+});
+$('#little_two').click(function() {
+    var big_pic = $("#bigpic").attr('src');
+    var little_pic = $("#little_two").attr('src');
+    $('#little_two').attr('src', big_pic);
+    $('#bigpic').attr('src', little_pic); 
+});
+$('#little_three').click(function() {
+    var big_pic = $("#bigpic").attr('src');
+    var little_pic = $("#little_three").attr('src');
+    $('#little_three').attr('src', big_pic);
+    $('#bigpic').attr('src', little_pic); 
 });
