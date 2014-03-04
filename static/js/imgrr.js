@@ -21,5 +21,5 @@ $('.clickable').click(function() {
 
 // Problem 5 (Imgrr) -------------------------------------------------
 $('.clickable2').click(function() {
-  $(this).attr('src','/static/img/'+$('SOMETHING'))
+  $(this).attr('src','/static/img/east_asian);
 });
