@@ -59,6 +59,12 @@ $('#p9').click(function() {
 		context.strokeRect(10 + i, 10, 50, 50)
 	}
   });
+
+$('#p10').click(function() {
+	for (var i = 1; i< 501; i = 5 + i) {
+		context.strokeRect(10 + i, 10, 5, 5)
+	}
+  });
   });
 
 
