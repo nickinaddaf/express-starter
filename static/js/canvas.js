@@ -53,6 +53,12 @@ $('#p8').click(function() {
   context.strokeStyle ='blue';
   context.strokeRect(20, 20, 150, 150);
   });
+
+$('#p9').click(function() {
+	for (var i = 1; i< 251; i = 50 + i) {
+		context.strokeRect(10 + i, 10, 50, 50)
+	}
+  });
   });
 
 
