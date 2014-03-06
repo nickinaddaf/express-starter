@@ -33,6 +33,26 @@ $('#p5').click(function() {
   context.lineTo(80, 20);
   context.stroke();
   });
+
+$('#p6').click(function() {
+  context.strokeStyle ='green';
+  context.strokeRect(50, 50, 10, 20);
+  });
+
+$('#p7').click(function() {
+  context.fillStyle ='red';
+  context.beginPath();
+  context.arc(200, 200, 10, 0, 2 * Math.PI);
+  context.fill();
+  });
+
+$('#p8').click(function() {
+  context.fillStyle = 'yellow';
+  context.strokeStyle ='blue';
+  context.fillRect(20, 20, 150, 150);
+  context.strokeStyle ='blue';
+  context.strokeRect(20, 20, 150, 150);
+  });
   });
 
 
