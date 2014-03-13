@@ -35,11 +35,17 @@ $(document).ready(function() {
   // Write drawTriplet function here
  var drawTriplet = function(x,y) {
     drawCircleStroke(x, y, 50, 'blue');
-    drawCircleStroke(x, y + 50, 50, 'green');
+    
     drawCircleStroke(x, y - 50, 50, 'green');
     drawCircleStroke(x + 50, y, 50, 'green');
     drawCircleStroke(x - 50, y, 50, 'green');
     drawSquareStroke(x - 50, y - 50, 100, 'red');
+  };
+
+  var drawTripletCircle = function(x, y, color) {
+    drawCircleStroke(x, y, 50, color );
+    drawCircleStroke(x + 35, y + 55, 50, color);
+    drawCircleStroke(x - 35, y + 55, 50, color);
   };
 
   // Challenge:
@@ -68,5 +74,20 @@ $(document).ready(function() {
     drawTriplet(300, 100);
   });
 
+$('#p6').click(function() {
+    drawTripletCircle(150, 150, 'green');
+  });
+
+$('#p7').click(function() {
+    drawTripletCircle(200, 300, 'blue');
+  });
+
+$('#p8').click(function() {
+    drawTripletCircle(100, 100, 'pink');
+    drawTripletCircle(100, 300, 'purple');
+    drawTripletCircle(300, 100, 'orange');
+    drawTripletCircle(300, 300, 'yellow');
+
+  });
 
 });
