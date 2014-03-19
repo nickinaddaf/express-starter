@@ -35,7 +35,7 @@ $(document).ready(function() {
   // Write drawTriplet function here
  var drawTriplet = function(x,y) {
     drawCircleStroke(x, y, 50, 'blue');
-    
+    drawCircleStroke(x, y + 50, 50, 'green');
     drawCircleStroke(x, y - 50, 50, 'green');
     drawCircleStroke(x + 50, y, 50, 'green');
     drawCircleStroke(x - 50, y, 50, 'green');
@@ -49,8 +49,33 @@ $(document).ready(function() {
   };
 
   // Challenge:
-  // Write drawTriangle, drawTriforce, drawTripleTriforce,
+  var drawTriangle = function(x, y, color) {
+    context.fillStyle=color;
+    context.moveTo(x, y);
+    context.lineTo(x + 50, y);
+    context.lineTo(x + 25, y - 43.3);
+    context.lineTo(x, y);
+    context.fill();
+  };
+
+  var drawTriforce = function(x, y, color) {
+    drawTriangle(x, y, color);
+    drawTriangle(x - 25, y + 43.3, color);
+    drawTriangle(x + 25, y + 43.3, color);
+  };
+
+  var draw_Triple_Triforce = function(x, y, color) {
+    drawTriforce(x, y, color);
+    drawTriforce(x + 50, y + 86.6, color);
+    drawTriforce(x - 50, y + 86.6, color);
+  };
+
   // drawSierpinski functions here
+  var draw_Sierpinski = function(x, y, color) {
+    draw_Triple_Triforce(x, y, color);
+    draw_Triple_Triforce(x + 100, y + 173.2, color);
+    draw_Triple_Triforce(x - 100, y + 173.2, color);
+  };
 
   $('#p1').click(function() {
     drawSquare(100, 200, 50, 'blue');
@@ -88,6 +113,22 @@ $('#p8').click(function() {
     drawTripletCircle(300, 100, 'orange');
     drawTripletCircle(300, 300, 'yellow');
 
+  });
+
+$('#p9').click(function() {
+    drawTriangle(250, 100, 'purple');
+  });
+
+$('#p10').click(function() {
+    drawTriforce(400, 450, 'plum');
+  });
+
+$('#p11').click(function() {
+    draw_Triple_Triforce(100, 100, 'HotPink');
+  });
+
+$('#p12').click(function() {
+    draw_Sierpinski(200, 100, 'Crimson');
   });
 
 });
