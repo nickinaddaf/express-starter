@@ -8,13 +8,16 @@ $(document).ready(function() {
   //PUT STUFF HERE
 
   //run an iteration of the game
-  var x = 20
+  var x = 20;
+  var y = 20;
 
   var updateGame = function() {
-    x = x + 5
+    x = x + 5;
+    y = y + 5;
+    context.clearRect(0, 0, canvas.width, canvas.height)
     context.fillStyle= 'HotPink';
     context.beginPath();
-    context.arc(x, 20, 20, 0, 2 * Math.PI);
+    context.arc(x, y, 20, 0, 2 * Math.PI);
     context.fill();
     setTimeout(updateGame, 10);
   };
