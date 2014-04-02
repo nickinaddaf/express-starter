@@ -8,19 +8,45 @@ $(document).ready(function() {
   //PUT STUFF HERE
 
   //run an iteration of the game
-  var x = 20;
-  var y = 20;
+
+  var circle = {
+    X: 20,   
+    Y: 20,
+    R: 20,
+    D: 40,
+    vx: 5,
+    vy: 5,
+  };
 
   var updateGame = function() {
-    x = x + 5;
-    y = y + 5;
-    context.clearRect(0, 0, canvas.width, canvas.height)
+    circle.X = circle.X + circle.vx;
+    circle.Y = circle.Y + circle.vy; 
+    if (circle.vy > 0 && circle.Y + circle.R >= canvas.height) 
+      {
+        circle.vy = -circle.vy;
+      }
+    if (circle.vx > 0 && circle.X + circle.R >= canvas.width) 
+      {
+        circle.vx = -circle.vx;
+      }
+    if (circle.vy < 0 && circle.Y - circle.R <= 0) 
+      {
+        circle.vy = -circle.vy;
+      }
+    if (circle.vx < 0 && circle.X - circle.R <= 0) 
+      {
+        circle.vx = -circle.vx;
+      }     
+
+    context.clearRect(0, 0, canvas.width, canvas.height);
     context.fillStyle= 'HotPink';
     context.beginPath();
-    context.arc(x, y, 20, 0, 2 * Math.PI);
+    context.arc(circle.X, circle.Y, circle.R, 0, 2 * Math.PI);
     context.fill();
     setTimeout(updateGame, 10);
   };
 
   updateGame();
 });
+
+
