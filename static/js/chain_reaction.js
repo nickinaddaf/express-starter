@@ -8,36 +8,21 @@ $(document).ready(function() {
   // PUT STUFF HERE
   var balls = [];
   
-  var b0 = {
-    X: 20,   
-    Y: 20,
-    R: 20,
-    C: 'HotPink',
-    vx: 2,
-    vy: 2,
+  var numBalls = 300 
+    for (var i = 0; i < numBalls; i = i + 1) {
+      var b1 = {
+      X: 100,   
+      Y: 50,
+      R: 10,
+      C: 'CornflowerBlue',
+      vx: 5 * Math.random(),
+      vy: 7 * Math.random(),
+    }
+      balls.push(b1);  
   };
 
-  var b1 = {
-    X: 100,   
-    Y: 50,
-    R: 50,
-    C: 'CornflowerBlue',
-    vx: 5,
-    vy: 5,
-  };
 
-  var b2 = {
-    X: 300,   
-    Y: 100,
-    R: 100,
-    C: 'MediumPurple',
-    vx: 5,
-    vy: 5,
-  };
 
-  balls.push(b0);
-  balls.push(b1);
-  balls.push(b2);
 
   // Run an interation of the game
   var updateGame = function() {
@@ -79,6 +64,6 @@ $(document).ready(function() {
     // PUT STUFF HERE
   });
 
-  updateGame();
+  requestAnimationFrame(updateGame);
 });
 
