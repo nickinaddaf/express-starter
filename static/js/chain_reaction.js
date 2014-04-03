@@ -13,6 +13,8 @@ $(document).ready(function() {
     Y: 20,
     R: 20,
     C: 'HotPink',
+    vx: 2,
+    vy: 2,
   };
 
   var b1 = {
@@ -20,6 +22,8 @@ $(document).ready(function() {
     Y: 50,
     R: 50,
     C: 'CornflowerBlue',
+    vx: 5,
+    vy: 5,
   };
 
   var b2 = {
@@ -27,6 +31,8 @@ $(document).ready(function() {
     Y: 100,
     R: 100,
     C: 'MediumPurple',
+    vx: 5,
+    vy: 5,
   };
 
   balls.push(b0);
@@ -35,6 +41,27 @@ $(document).ready(function() {
 
   // Run an interation of the game
   var updateGame = function() {
+    for (var i = 0; i < balls.length; i = i + 1) {
+      balls[i].X = balls[i].X + balls[i].vx;
+      balls[i].Y = balls[i].Y + balls[i].vy; 
+      if (balls[i].vy > 0 && balls[i].Y + balls[i].R >= canvas.height) 
+        {
+          balls[i].vy = -balls[i].vy;
+        }
+      if (balls[i].vx > 0 && balls[i].X + balls[i].R >= canvas.width) 
+        {
+          balls[i].vx = -balls[i].vx;
+        }
+      if (balls[i].vy < 0 && balls[i].Y - balls[i].R <= 0) 
+        {
+          balls[i].vy = -balls[i].vy;
+        }
+      if (balls[i].vx < 0 && balls[i].X - balls[i].R <= 0) 
+        {
+          balls[i].vx = -balls[i].vx;
+        }
+    }    
+    context.clearRect(0, 0, canvas.width, canvas.height);
     for (var i = 0; i < balls.length; i = i + 1) {
       context.fillStyle= balls[i].C;
       context.beginPath();
