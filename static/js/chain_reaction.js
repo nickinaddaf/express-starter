@@ -57,13 +57,23 @@ $(document).ready(function() {
   };
 
   // Handle a canvas click event
+  
+
   $('#game_canvas').click(function(e) {
     // Find the mouse x and y relative to the top-left corner of the canvas
     var x = e.pageX - $(this).offset().left;
     var y = e.pageY - $(this).offset().top;
     // PUT STUFF HERE
+    var b1 = {
+      X: 100,   
+      Y: 50,
+      R: 10,
+      C: 'HotPink',
+      vx: 5 * Math.random(),
+      vy: 7 * Math.random(),
+    }
+      balls.push(b1);
   });
-
-  requestAnimationFrame(updateGame);
+  setTimeout(updateGame, 10);
 });
 
