@@ -7,6 +7,7 @@ $(document).ready(function() {
 
   // PUT STUFF HERE
   var balls = [];
+  var reactions = [];
   
   var numBalls = 300 
     for (var i = 0; i < numBalls; i = i + 1) {
@@ -52,7 +53,15 @@ $(document).ready(function() {
       context.beginPath();
       context.arc(balls[i].X, balls[i].Y, balls[i].R, 0, 2 * Math.PI);
       context.fill();
-  }
+    }
+
+    for (var i = 0; i < reactions.length; i = i + 1) {
+      context.fillStyle= reactions[i].C;
+      context.beginPath();
+      context.arc(reactions[i].X, reactions[i].Y, reactions[i].R, 0, 2 * Math.PI);
+      context.fill();
+    }
+
     setTimeout(updateGame, 10);
   };
 
@@ -64,15 +73,13 @@ $(document).ready(function() {
     var x = e.pageX - $(this).offset().left;
     var y = e.pageY - $(this).offset().top;
     // PUT STUFF HERE
-    var b1 = {
-      X: 100,   
-      Y: 50,
-      R: 10,
+      var b2 = {
+      X: x,   
+      Y: y,
+      R: 30,
       C: 'HotPink',
-      vx: 5 * Math.random(),
-      vy: 7 * Math.random(),
     }
-      balls.push(b1);
+      reactions.push(b2);
   });
   setTimeout(updateGame, 10);
 });
