@@ -60,6 +60,9 @@ $(document).ready(function() {
       context.beginPath();
       context.arc(reactions[i].X, reactions[i].Y, reactions[i].R, 0, 2 * Math.PI);
       context.fill();
+      if (reactions[i].R < 30) {
+        reactions[i].R = reactions[i].R + 1;
+      }
     }
 
     setTimeout(updateGame, 10);
@@ -76,7 +79,7 @@ $(document).ready(function() {
       var b2 = {
       X: x,   
       Y: y,
-      R: 30,
+      R: 1,
       C: 'HotPink',
     }
       reactions.push(b2);
