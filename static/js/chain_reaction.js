@@ -9,7 +9,7 @@ $(document).ready(function() {
   var balls = [];
   var reactions = [];
   
-  var numBalls = 300 
+  var numBalls = 100 
     for (var i = 0; i < numBalls; i = i + 1) {
       var b1 = {
       X: 100,   
@@ -27,6 +27,18 @@ $(document).ready(function() {
 
   // Run an interation of the game
   var updateGame = function() {
+    for (var i = 0; i < balls.length; i++) {
+        var collided = false; 
+        for (var j = 0; j < reactions.length; j++) {
+                var Rsum = reactions[j].R + balls[i].R;
+                var xdiff = reactions[j].X - balls[i].X;
+                var ydiff = reactions[j].Y - balls[i].Y;
+                var dist = Math.sqrt(xdiff * xdiff + ydiff * ydiff)
+                  if (dist < Rsum) {
+                    collided = true;
+                  }
+        }
+    }
     for (var i = 0; i < balls.length; i = i + 1) {
       balls[i].X = balls[i].X + balls[i].vx;
       balls[i].Y = balls[i].Y + balls[i].vy; 
