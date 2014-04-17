@@ -43,7 +43,8 @@ $(document).ready(function() {
             X: balls[i].X, 
             Y: balls[i].Y,
             R: 1,
-            C: 'HotPink'
+            C: 'HotPink',
+            T: 0,
           }
           reactions.push(b3);
 
@@ -80,12 +81,22 @@ $(document).ready(function() {
     }
 
     for (var i = 0; i < reactions.length; i = i + 1) {
+      reactions[i].T++;
+      if (reactions[i].T > 100) {
+        reactions[i].R--;    
+      } 
+      else if (reactions[i].T < 100 && reactions[i].R < 30) {
+        reactions[i].R++;
+      }
+      if (reactions[i].R <=0) {
+        reactions.splice(i, 1);
+          i--;
+       }
+      else {  
       context.fillStyle= reactions[i].C;
       context.beginPath();
       context.arc(reactions[i].X, reactions[i].Y, reactions[i].R, 0, 2 * Math.PI);
       context.fill();
-      if (reactions[i].R < 30) {
-        reactions[i].R = reactions[i].R + 1;
       }
     }
 
@@ -105,6 +116,7 @@ $(document).ready(function() {
       Y: y,
       R: 1,
       C: 'HotPink',
+      T: 0,
     }
       reactions.push(b2);
   });
