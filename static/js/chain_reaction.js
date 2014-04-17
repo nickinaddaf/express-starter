@@ -34,9 +34,13 @@ $(document).ready(function() {
                 var xdiff = reactions[j].X - balls[i].X;
                 var ydiff = reactions[j].Y - balls[i].Y;
                 var dist = Math.sqrt(xdiff * xdiff + ydiff * ydiff)
-                  if (dist < Rsum) {
-                    collided = true;
+                  if (dist <= Rsum) {
+                    var collided = true
                   }
+        }
+        if (collided === true) {
+          balls.splice(i, 1);
+          i--;
         }
     }
     for (var i = 0; i < balls.length; i = i + 1) {
