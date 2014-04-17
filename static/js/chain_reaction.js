@@ -39,6 +39,14 @@ $(document).ready(function() {
                   }
         }
         if (collided === true) {
+          var b3 = {
+            X: balls[i].X, 
+            Y: balls[i].Y,
+            R: 1,
+            C: 'HotPink'
+          }
+          reactions.push(b3);
+
           balls.splice(i, 1);
           i--;
         }
