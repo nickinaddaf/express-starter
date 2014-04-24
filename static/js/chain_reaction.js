@@ -10,6 +10,8 @@ $(document).ready(function() {
   var reactions = [];
   var reacting = false;
   var numReacted = 0;
+  var gameState = 'menu';
+  var menuText = 'Click to Play!';
   
   var numBalls = 100 
     for (var i = 0; i < numBalls; i = i + 1) {
@@ -22,13 +24,20 @@ $(document).ready(function() {
       vy: 7 * Math.random(),
     }
       balls.push(b1);  
-  };
+  }
 
 
 
 
   // Run an interation of the game
   var updateGame = function() {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    if (gameState === 'menu') {
+      context.fillStyle = "purple";
+      context.font = "40px Arial";
+      context.fillText(menuText, 50, 300);
+    }
+    else if (gameState === "playing") {
     for (var i = 0; i < balls.length; i++) {
         var collided = false; 
         for (var j = 0; j < reactions.length; j++) {
@@ -74,7 +83,7 @@ $(document).ready(function() {
           balls[i].vx = -balls[i].vx;
         }
     }    
-    context.clearRect(0, 0, canvas.width, canvas.height);
+    
     for (var i = 0; i < balls.length; i = i + 1) {
       context.fillStyle= balls[i].C;
       context.beginPath();
@@ -105,7 +114,15 @@ $(document).ready(function() {
     context.fillStyle = "green";
     context.font = "20px Arial";
     context.fillText('Reactions: ' + numReacted, 50, 50);
+  
+    if (reacting === true && reactions.length == 0) {
+      menuText = "Game Over! You reacted " + numReacted + " balls!";
+      gameState = "menu";
+    }
 
+    }
+
+    
     setTimeout(updateGame, 10);
   };
 
@@ -114,7 +131,27 @@ $(document).ready(function() {
 
   $('#game_canvas').click(function(e) {
     // Find the mouse x and y relative to the top-left corner of the canvas
-    if (reacting === false) {
+    if (gameState === 'menu') {
+      gameState = "playing";
+      reacting = false;
+      numReacted = 0;
+      balls.splice(0,balls.length);
+      var numBalls = 100 
+      for (var i = 0; i < numBalls; i = i + 1) {
+      var b1 = {
+      X: 100,   
+      Y: 50,
+      R: 10,
+      C: 'CornflowerBlue',
+      vx: 5 * Math.random(),
+      vy: 7 * Math.random(),
+    }
+      balls.push(b1);  
+  }
+
+    }
+
+    if (gameState === "playing" && reacting === false) {
       var x = e.pageX - $(this).offset().left;
       var y = e.pageY - $(this).offset().top;
       // PUT STUFF HERE
