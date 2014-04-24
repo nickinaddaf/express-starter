@@ -8,6 +8,8 @@ $(document).ready(function() {
   // PUT STUFF HERE
   var balls = [];
   var reactions = [];
+  var reacting = false;
+  var numReacted = 0;
   
   var numBalls = 100 
     for (var i = 0; i < numBalls; i = i + 1) {
@@ -47,7 +49,7 @@ $(document).ready(function() {
             T: 0,
           }
           reactions.push(b3);
-
+          numReacted = numReacted + 1;
           balls.splice(i, 1);
           i--;
         }
@@ -85,7 +87,7 @@ $(document).ready(function() {
       if (reactions[i].T > 100) {
         reactions[i].R--;    
       } 
-      else if (reactions[i].T < 100 && reactions[i].R < 30) {
+      else if (reactions[i].R < 30) {
         reactions[i].R++;
       }
       if (reactions[i].R <=0) {
@@ -100,6 +102,10 @@ $(document).ready(function() {
       }
     }
 
+    context.fillStyle = "green";
+    context.font = "20px Arial";
+    context.fillText('Reactions: ' + numReacted, 50, 50);
+
     setTimeout(updateGame, 10);
   };
 
@@ -108,17 +114,20 @@ $(document).ready(function() {
 
   $('#game_canvas').click(function(e) {
     // Find the mouse x and y relative to the top-left corner of the canvas
-    var x = e.pageX - $(this).offset().left;
-    var y = e.pageY - $(this).offset().top;
-    // PUT STUFF HERE
-      var b2 = {
-      X: x,   
-      Y: y,
-      R: 1,
-      C: 'HotPink',
-      T: 0,
-    }
-      reactions.push(b2);
+    if (reacting === false) {
+      var x = e.pageX - $(this).offset().left;
+      var y = e.pageY - $(this).offset().top;
+      // PUT STUFF HERE
+        reacting = true;
+        var b2 = {
+        X: x,   
+        Y: y,
+        R: 1,
+        C: 'HotPink',
+        T: 0,
+        }
+        reactions.push(b2);
+      }  
   });
   setTimeout(updateGame, 10);
 });
