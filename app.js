@@ -54,6 +54,10 @@ app.get('/chain-reaction', function(req, res) {
   res.render('chain_reaction.html', { });
 });
 
+app.get('/random_fact', function(req, res) {
+  res.render('fact.html', {random_fact: "A carbohydrate is not a protein"});
+});
+
 ///////////////////////////////////////////////////////////////////////////////
 // RUN CONFIGURATION                                                         //
 ///////////////////////////////////////////////////////////////////////////////
