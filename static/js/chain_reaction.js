@@ -4,6 +4,8 @@ $(document).ready(function() {
   var context = canvas.getContext('2d');
   var width = canvas.width;
   var height = canvas.height;
+  var curLevel = 0;
+  var levelText = "Level 1 - React 1 out of 5 balls"
 
   // PUT STUFF HERE
   var balls = [];
@@ -12,6 +14,15 @@ $(document).ready(function() {
   var numReacted = 0;
   var gameState = 'menu';
   var menuText = 'Click to Play!';
+  var levels = [{num: 1, minReactions: 1, numBalls: 5}, 
+                {num: 2, minReactions: 3, numBalls: 7}, 
+                {num: 3, minReactions: 5, numBalls: 15},
+                {num: 4, minReactions: 7, numBalls: 25},
+                {num: 5, minReactions: 10, numBalls: 35},
+                {num: 6, minReactions: 12, numBalls: 45},
+                {num: 7, minReactions: 15, numBalls: 50},
+                {num: 8, minReactions: 17, numBalls: 55}, 
+                {num: 9, minReactions: 20, numBalls: 60}];
   
   var numBalls = 100 
     for (var i = 0; i < numBalls; i = i + 1) {
@@ -115,10 +126,25 @@ $(document).ready(function() {
     context.font = "20px Arial";
     context.fillText('Reactions: ' + numReacted, 50, 50);
   
-    if (reacting === true && reactions.length == 0) {
+    if (reacting === true && reactions.length === 0) {
       menuText = "Game Over! You reacted " + numReacted + " balls!";
       gameState = "menu";
+      if (numReacted >= levels[curLevel].minReactions) {
+        curLevel = curLevel + 1;
+        menuText = "Hooray! Next Level!"
+        if (levels[curLevel].num === levels.length) {
+          curLevel = 0
+          menuText = "Hooray! You Won! You are not a failure! :)"
+        }
+      }
+      else {
+        menuText = ":( You failed. Click to try again."
+      }
     }
+
+    context.fillStyle = "green";
+    context.font = "20px Arial";
+    context.fillText(levelText, 300, 50);
 
     }
 
@@ -137,7 +163,8 @@ $(document).ready(function() {
       numReacted = 0;
       balls.splice(0,balls.length);
       var numBalls = 100 
-      for (var i = 0; i < numBalls; i = i + 1) {
+      levelText = "Level " + levels[curLevel].num + " - React " + levels[curLevel].minReactions + " out of " + levels[curLevel].numBalls + " balls";
+      for (var i = 0; i < levels[curLevel].numBalls; i = i + 1) {
       var b1 = {
       X: 100,   
       Y: 50,
@@ -145,6 +172,7 @@ $(document).ready(function() {
       C: 'CornflowerBlue',
       vx: 5 * Math.random(),
       vy: 7 * Math.random(),
+      
     }
       balls.push(b1);  
   }
